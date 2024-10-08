@@ -1,7 +1,5 @@
 package com.example.rento.service;
 
-
-
 import com.example.rento.entity.Property;
 import com.example.rento.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;

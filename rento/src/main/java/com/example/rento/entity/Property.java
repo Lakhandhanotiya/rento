@@ -62,4 +62,3 @@ public class Property {
         this.rooms = rooms;
     }
 }
-
