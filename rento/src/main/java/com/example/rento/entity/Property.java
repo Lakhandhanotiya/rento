@@ -1,28 +1,36 @@
 package com.example.rento.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long propertyId;
+    private Long id;
     private String name;
     private String address;
-    private String imageUrl;	
+    private String imageUrl;
 
-    public Long getPropertyId() {
-		return propertyId;
-	}
+    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Room> rooms;
 
-	public void setPropertyId(Long propertyId) {
-		this.propertyId = propertyId;
-	}
+    // Getters and setters
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
         return name;
     }
 
@@ -46,5 +54,11 @@ public class Property {
         this.imageUrl = imageUrl;
     }
 
-}
+    public List<Room> getRooms() {
+        return rooms;
+    }
 
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+}

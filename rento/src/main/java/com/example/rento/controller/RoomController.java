@@ -5,27 +5,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/room")
-public class RoomController {	
+public class RoomController {
     @Autowired
     private RoomService roomService;
 
     @GetMapping("/allrooms/{propertyId}")
-    public Optional<Room> getRoomsByProperty(@PathVariable Long propertyId) {
-    	System.out.println("propertyId : "+propertyId);
+    public List<Room> getRoomsByProperty(@PathVariable Long propertyId) {
         return roomService.getRoomsByProperty(propertyId);
     }
 
-    @PostMapping("/addroom")
+    @PostMapping("/addrooms")
     public Room createRoom(@RequestBody Room room) {
         return roomService.saveRoom(room);
     }
     @GetMapping("/allrooms")
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();
-    }	
+    }
    
 }
