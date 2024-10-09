@@ -1,0 +1,16 @@
+/* Home.css */
+.home-container {
+    text-align: center;
+    margin: 50px auto;
+  }
+  
+  .home-container h1 {
+    font-size: 36px;
+    color: #4caf50;
+  }
+  
+  .home-container p {
+    font-size: 18px;
+    color: #555;
+  }
+  
