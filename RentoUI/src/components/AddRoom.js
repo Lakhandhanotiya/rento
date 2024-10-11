@@ -1,4 +1,4 @@
-    // src/components/AddRoom.js
+// src/components/AddRoom.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AddRoom.css";
@@ -20,9 +20,10 @@ const AddRoom = () => {
   // Fetch properties when the component loads
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/properties/allproperties")
+      .get("http://localhost:8080/api/property/allproperties")
       .then((response) => {
-        setProperties(response.data);
+        console.log("properties:", response.data);
+        setProperties(response.data.data);
       })
       .catch((error) => {
         console.error("Error fetching properties:", error);
@@ -45,7 +46,7 @@ const AddRoom = () => {
         description: room.description,
         imageUrl: room.imageUrl,
         property: {
-          property_id: room.propertyId,
+          propertyId: room.propertyId,
         },
       })
       .then((response) => {

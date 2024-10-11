@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: flex; /* Flexbox for layout */
 }
 
 .App-logo {
@@ -35,4 +36,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+.toggle-button {
+  position: fixed; /* Position the button at the top */
+  left: 10px; /* Position from the left */
+  top: 10px; /* Position from the top */
+  padding: 10px 15px; /* Padding for the button */
+  background-color: #0073e6; /* Background color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 10; /* Ensure the button is above the sidebar */
 }

@@ -19,4 +19,8 @@ public class PropertyService {
     public Property saveProperty(Property property) {
         return propertyRepository.save(property);
     }
+
+	public void deleteProperty(Long id) {
+		propertyRepository.deleteById(id);
+	}
 }

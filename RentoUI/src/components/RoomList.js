@@ -12,6 +12,7 @@ const RoomList = () => {
     axios
       .get("http://localhost:8080/api/room/allrooms")
       .then((response) => {
+        console.log("room list data: ",response.data);
         setRooms(response.data);
       })
       .catch((error) => {
@@ -25,7 +26,7 @@ const RoomList = () => {
       {rooms.length > 0 ? (
         <div className="room-list">
           {rooms.map((room) => (
-            <div key={room.id} className="room-list">
+            <div key={room.roomId} className="room-list">
               <h3>{room.name}</h3>
               <img
                 src={room.imageUrl}
@@ -34,6 +35,7 @@ const RoomList = () => {
               />
               <p><strong>Price:</strong> ${room.price}</p>
               <p><strong>Description:</strong> {room.description}</p>
+              <p><strong>Property:</strong> {room.property.name}</p>
             </div>
           ))}
         </div>
