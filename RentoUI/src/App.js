@@ -5,7 +5,9 @@ import AddProperty from "./components/AddProperty";
 import PropertyList from "./components/PropertyList"; // Import PropertyList
 import Sidebar from "./components/Sidebar";
 import AddRoom from "./components/AddRoom";
+import Home from "./components/Home";
 //import AddProperty from "./components/AddProperty";
+
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,8 +28,11 @@ const App = () => {
         <Route path="/room-list" element={<RoomList />} />
           <Route path="/add-room" element={<AddRoom />} /> {/* Use element instead of component */}
           <Route path="/properties" element={<PropertyList />} /> {/* Add PropertyList route */}
+          <Route path="/Sidebar" element={<Sidebar />} /> 
           <Route path="/" element={
+
             <>
+                        <Home/>
               <h1>Room Rent Service</h1>
               <RoomList />
             </>

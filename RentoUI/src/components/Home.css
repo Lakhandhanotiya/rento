@@ -2,6 +2,14 @@
 .home-container {
     text-align: center;
     margin: 50px auto;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 35px;
+    width: max-content;
   }
   
   .home-container h1 {

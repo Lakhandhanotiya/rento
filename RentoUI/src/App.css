@@ -42,10 +42,10 @@
   left: 10px; /* Position from the left */
   top: 10px; /* Position from the top */
   padding: 10px 15px; /* Padding for the button */
-  background-color: #0073e6; /* Background color */
-  color: white; /* Text color */
+  background-color: #c9d8e7; /* Background color */
+  color: rgb(21, 20, 20); /* Text color */
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
-  z-index: 10; /* Ensure the button is above the sidebar */
+  z-index: 10px; /* Ensure the button is above the sidebar */
 }
