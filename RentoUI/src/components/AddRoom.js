@@ -74,7 +74,7 @@ const AddRoom = () => {
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Room Name:</label>
+          <label>Room Number:</label>
           <input
             type="text"
             name="name"

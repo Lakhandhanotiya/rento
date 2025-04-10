@@ -1,56 +1,35 @@
-// RegistrationForm.js
+// src/components/RegistrationForm.js
 import React, { useState } from 'react';
-import axios from 'axios';
-import './RegistrationForm.css';
+import API from './api';
 
 const RegistrationForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    userName: '',
+    password: ''
+  });
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUser = {
-      name,
-      email,
-      password,
-      phoneNumber,
-    };
-
     try {
-      const response = await axios.post('http://localhost:8080/api/user/register', newUser);
-      console.log('User registered successfully:', response.data);
-      alert('Registration Successful');
-    } catch (error) {
-      console.error('Error registering user:', error);
-      alert('Registration Failed');
+      await API.post('/api/auth/register', formData);
+      alert("Registration successful");
+    } catch (err) {
+      console.error(err);
+      alert("Error registering user");
     }
   };
 
   return (
-    <div className="registration-form-container">
-      <h2>User Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-        </div>
-        <div className="form-group">
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <div className="form-group">
-          <label>Phone Number:</label>
-          <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <h2>Register</h2>
+      <input name="email" placeholder="Email" onChange={handleChange} required />
+      <input name="userName" placeholder="Username" onChange={handleChange} required />
+      <input name="password" placeholder="Password" type="password" onChange={handleChange} required />
+      <button type="submit">Register</button>
+    </form>
   );
 };
 

@@ -50,7 +50,7 @@ const PropertyList = () => {
                 <strong>Address:</strong> {property.address}
               </p>
               <button onClick={() => handleDeleteProperty(property.propertyId)}>
-                Remove Property
+                Delete Property
               </button>
             </div>
           ))}
