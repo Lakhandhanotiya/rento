@@ -1,5 +1,6 @@
 package com.example.rento.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +12,8 @@ import jakarta.persistence.ManyToOne;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "room_id")
+    private Long roomId;
     private String name;
     private double price;
     private String description;
@@ -21,16 +23,15 @@ public class Room {
     @JoinColumn(name = "property_id")
     private Property property;
 
-    // Getters and setters
-    public Long getId() {
-        return id;
-    }
+    public Long getRoomId() {
+		return roomId;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setRoomId(Long roomId) {
+		this.roomId = roomId;
+	}
 
-    public String getName() {
+	public String getName() {
         return name;
     }
 

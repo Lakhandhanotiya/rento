@@ -1,65 +1,69 @@
 package com.example.rento.entity;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Property {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String address;
-    private String imageUrl;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "property_id")
+	private Long propertyId;
+	private String name;
+	private String address;
+	private String imageUrl;
+	private double latitude; // Add latitude
+	private double longitude; // Add longitude
 
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Room> rooms;
+	public double getLatitude() {
+		return latitude;
+	}
 
-    // Getters and setters
-    public Long getId() {
-        return id;
-    }
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public double getLongitude() {
+		return longitude;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Long getPropertyId() {
+		return propertyId;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public void setPropertyId(Long propertyId) {
+		this.propertyId = propertyId;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public List<Room> getRooms() {
-        return rooms;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
-    }
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 }
-

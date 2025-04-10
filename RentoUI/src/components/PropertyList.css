@@ -1,0 +1,24 @@
+.property-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.property-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  width: 250px;
+  text-align: center;
+}
+
+.property-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.property-item h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}

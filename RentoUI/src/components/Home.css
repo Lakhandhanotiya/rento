@@ -1,0 +1,24 @@
+/* Home.css */
+.home-container {
+    text-align: center;
+    margin: 50px auto;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 35px;
+    width: max-content;
+  }
+  
+  .home-container h1 {
+    font-size: 36px;
+    color: #4caf50;
+  }
+  
+  .home-container p {
+    font-size: 18px;
+    color: #555;
+  }
+  

@@ -25,4 +25,3 @@ public class RoomService {
 		return roomRepository.findAll();
 	}
 }
-

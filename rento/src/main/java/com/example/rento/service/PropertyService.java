@@ -1,7 +1,5 @@
 package com.example.rento.service;
 
-
-
 import com.example.rento.entity.Property;
 import com.example.rento.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +19,8 @@ public class PropertyService {
     public Property saveProperty(Property property) {
         return propertyRepository.save(property);
     }
+
+	public void deleteProperty(Long id) {
+		propertyRepository.deleteById(id);
+	}
 }
