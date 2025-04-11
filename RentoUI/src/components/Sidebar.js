@@ -1,29 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="sidebar">
-      <h2>Categories</h2>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <Link to="/add-room">Add Room</Link>
-        </li>
-        <li>
-          <Link to="/add-property">Add Property</Link>
-        </li>
-        <li>
-          <Link to="/room-list">Room list</Link>
-        </li>
-        <li>
-          <Link to="/properties">Property List</Link>
-        </li>
-      </ul>
-    </div>
+    <>
+      <div className="menu-icon" onClick={toggleSidebar}>
+        ☰ Menu
+      </div>
+
+      <div className={`modern-sidebar ${isOpen ? "open" : ""}`}>
+        <div className="sidebar-header">
+          <h2>RENTOROOM</h2>
+        </div>
+        <ul className="sidebar-menu">
+          <li className={location.pathname === "/" ? "active" : ""}>
+            <Link to="/">🏠 Home</Link>
+          </li>
+          <li className={location.pathname === "/add-room" ? "active" : ""}>
+            <Link to="/add-room">➕ Add Room</Link>
+          </li>
+          <li className={location.pathname === "/add-property" ? "active" : ""}>
+            <Link to="/add-property">🏢 Add Property</Link>
+          </li>
+          <li className={location.pathname === "/room-list" ? "active" : ""}>
+            <Link to="/room-list">🛏️ Room List</Link>
+          </li>
+          <li className={location.pathname === "/property-list" ? "active" : ""}>
+            <Link to="/property-list">📋 Property List</Link>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 

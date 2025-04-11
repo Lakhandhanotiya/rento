@@ -1,50 +1,119 @@
 import React, { useState } from "react";
-import RoomList from "./components/RoomList";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RoomList from "./components/RoomList";
 import AddProperty from "./components/AddProperty";
-import PropertyList from "./components/PropertyList"; // Import PropertyList
+import PropertyList from "./components/PropertyList";
 import Sidebar from "./components/Sidebar";
 import AddRoom from "./components/AddRoom";
 import Home from "./components/Home";
-import LoginPage from './components/Login';
+import LoginPage from './components/LoginPage';
 import RegistrationForm from "./components/RegistrationForm";
+import PrivateRoute from './components/PrivateRoute';
 
 import "./App.css";
-//import AddProperty from "./components/AddProperty";
-
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const toggleSidebar = () => {
-    setIsOpen(!isOpen); // Toggle the state
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
     <Router>
-       <div className="App">
-        <button onClick={toggleSidebar} className="toggle-button">
-          {isOpen ? 'Close Menu' : 'Open Menu'}
-        </button>
-        {isOpen && <Sidebar />}
+      <div className="App d-flex">
         <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationForm />} />
-        <Route path="/add-property" element={<AddProperty />} />
-        <Route path="/property-list" element={<PropertyList />} />
-        <Route path="/room-list" element={<RoomList />} />
-          <Route path="/add-room" element={<AddRoom />} /> Use element instead of component
-          <Route path="/properties" element={<PropertyList />} /> Add PropertyList route
-          <Route path="/Sidebar" element={<Sidebar />} />
+
+          {/* Public Routes */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegistrationForm />} />
+
+          {/* Protected Layout with Sidebar */}
           <Route path="/" element={
-              <>
-                <Home />
-                <h1>Room Rent Service</h1>
-                <RoomList />
-              </>
+            <PrivateRoute>
+              <div className="d-flex w-100">
+                {isSidebarOpen && (
+                  <div className="bg-light p-3 border-end" style={{ minWidth: '220px' }}>
+                    <Sidebar />
+                  </div>
+                )}
+                <div className="flex-grow-1 p-4">
+                  <button className="btn btn-sm btn-primary mb-3" onClick={toggleSidebar}>
+                    {isSidebarOpen ? 'Hide Sidebar' : 'Show Sidebar'}
+                  </button>
+                  <Home />
+                  <h1 className="mb-4">Room Rent Service</h1>
+                  <RoomList />
+                </div>
+              </div>
+            </PrivateRoute>
           } />
+
+          {/* Other protected routes with same sidebar layout */}
+          <Route path="/add-property" element={
+            <PrivateRoute>
+              <div className="d-flex w-100">
+                {isSidebarOpen && (
+                  <div className="bg-light p-3 border-end" style={{ minWidth: '220px' }}>
+                    <Sidebar />
+                  </div>
+                )}
+                <div className="flex-grow-1 p-4">
+                  <AddProperty />
+                </div>
+              </div>
+            </PrivateRoute>
+          } />
+
+          <Route path="/property-list" element={
+            <PrivateRoute>
+              <div className="d-flex w-100">
+                {isSidebarOpen && (
+                  <div className="bg-light p-3 border-end" style={{ minWidth: '220px' }}>
+                    <Sidebar />
+                  </div>
+                )}
+                <div className="flex-grow-1 p-4">
+                  <PropertyList />
+                </div>
+              </div>
+            </PrivateRoute>
+          } />
+
+          <Route path="/room-list" element={
+            <PrivateRoute>
+              <div className="d-flex w-100">
+                {isSidebarOpen && (
+                  <div className="bg-light p-3 border-end" style={{ minWidth: '220px' }}>
+                    <Sidebar />
+                  </div>
+                )}
+                <div className="flex-grow-1 p-4">
+                  <RoomList />
+                </div>
+              </div>
+            </PrivateRoute>
+          } />
+
+          <Route path="/add-room" element={
+            <PrivateRoute>
+              <div className="d-flex w-100">
+                {isSidebarOpen && (
+                  <div className="bg-light p-3 border-end" style={{ minWidth: '220px' }}>
+                    <Sidebar />
+                  </div>
+                )}
+                <div className="flex-grow-1 p-4">
+                  <AddRoom />
+                </div>
+              </div>
+            </PrivateRoute>
+          } />
+          
         </Routes>
       </div>
     </Router>
   );
 };
+
 export default App;

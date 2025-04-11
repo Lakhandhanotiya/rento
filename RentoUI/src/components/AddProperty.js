@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import L from "leaflet";  // Import Leaflet for map integration
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./AddProperty.css";
+import API from "./api";
 
 // Fix for missing default marker icon in Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -33,7 +33,7 @@ const AddProperty = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
+    API
       .post("http://localhost:8080/api/property/addproperty", property)
       .then((response) => {
         alert("Property added successfully!");
