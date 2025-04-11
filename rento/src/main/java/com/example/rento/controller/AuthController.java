@@ -45,7 +45,7 @@ public class AuthController {
 	        try {
 	            authenticationManager.authenticate(
 	                    new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
-	            LOGGER.info("Authentication Sucessful.");
+	            LOGGER.info("Authentication Successful.");
 	        } catch (Exception ex) {
 	            throw new Exception("Invalid username/password");
 	        }
