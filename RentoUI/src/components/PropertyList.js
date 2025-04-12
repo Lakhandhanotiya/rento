@@ -1,6 +1,6 @@
 // src/components/PropertyList.js
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from './api'; // your axios setup
 import "./PropertyList.css"; // You can use the same styles as RoomList
 
 const PropertyList = () => {
@@ -8,8 +8,7 @@ const PropertyList = () => {
 
   useEffect(() => {
     // Fetch all property details from the backend
-    axios
-      .get("http://localhost:8080/api/property/allproperties")
+    API.get("/api/property/allproperties")
       .then((response) => {
         console.log("property list data: ", response.data);
         setProperties(response.data.data);
@@ -19,7 +18,7 @@ const PropertyList = () => {
       });
   }, []);
   const handleDeleteProperty = (id) => {
-    axios
+    API
       .delete(`http://localhost:8080/api/property/deleteproperty/${id}`) // API call to delete the property
       .then(() => {
         // Filter out the deleted property from the state
