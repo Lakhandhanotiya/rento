@@ -1,8 +1,8 @@
 // src/components/AddRoom.js
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./AddRoom.css";
 import "./AddProperty.css";
+import API from "./api";
 
 const AddRoom = () => {
   const [properties, setProperties] = useState([]);
@@ -19,8 +19,8 @@ const AddRoom = () => {
 
   // Fetch properties when the component loads
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/property/allproperties")
+    API
+      .get("/api/property/allproperties")
       .then((response) => {
         console.log("properties:", response.data);
         setProperties(response.data.data);
@@ -39,8 +39,8 @@ const AddRoom = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8080/api/room/addroom", {
+    API
+      .post("/api/room/addroom", {
         name: room.name,
         price: parseFloat(room.price),
         description: room.description,

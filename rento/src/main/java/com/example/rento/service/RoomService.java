@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
+
 public class RoomService {
     @Autowired
     private RoomRepository roomRepository;
@@ -24,4 +26,6 @@ public class RoomService {
 		// TODO Auto-generated method stub
 		return roomRepository.findAll();
 	}
-}
+
+
+	}
