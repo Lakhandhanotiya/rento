@@ -19,7 +19,7 @@ const PropertyList = () => {
   }, []);
   const handleDeleteProperty = (id) => {
     API
-      .delete(`http://localhost:8080/api/property/deleteproperty/${id}`) // API call to delete the property
+      .delete(`/api/property/deleteproperty/${id}`) // API call to delete the property
       .then(() => {
         // Filter out the deleted property from the state
         setProperties(
