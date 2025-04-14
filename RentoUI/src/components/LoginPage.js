@@ -1,8 +1,9 @@
 // src/components/LoginPage.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link } from 'react-router-dom';
 import API from './api'; // your axios setup
-import './LoginPage.css';
+import "./LoginSignUpPage.css";
+
 
 const LoginPage = () => {
   const [auth, setAuth] = useState({ email: '', password: '' });
@@ -26,11 +27,12 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
+    <form onSubmit={handleSubmit} className="login-signup-form">
       <h2>Login</h2>
       <input name="email" placeholder="Email" onChange={handleChange} required />
       <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
       <button type="submit">Login</button>
+        <Link to="/register">SignUp</Link>
     </form>
   );
 };

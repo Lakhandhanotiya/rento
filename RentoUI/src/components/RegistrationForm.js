@@ -1,6 +1,8 @@
 // src/components/RegistrationForm.js
 import React, { useState } from 'react';
 import API from './api';
+import "./LoginSignUpPage.css";
+import { Link } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -23,12 +25,13 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
+    <form className = "login-signup-form" onSubmit={handleSubmit}>
+      <h2>Sign Up</h2>
       <input name="email" placeholder="Email" onChange={handleChange} required />
       <input name="userName" placeholder="Username" onChange={handleChange} required />
       <input name="password" placeholder="Password" type="password" onChange={handleChange} required />
-      <button type="submit">Register</button>
+      <button type="submit">Sign Up</button>
+      <Link to = "/login">Login</Link>
     </form>
   );
 };

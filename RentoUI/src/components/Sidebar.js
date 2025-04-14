@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
+import Logout from "./Logout";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +34,13 @@ const Sidebar = () => {
           <li className={location.pathname === "/room-list" ? "active" : ""}>
             <Link to="/room-list">🛏️ Room List</Link>
           </li>
-          <li className={location.pathname === "/property-list" ? "active" : ""}>
+          <li
+            className={location.pathname === "/property-list" ? "active" : ""}
+          >
             <Link to="/property-list">📋 Property List</Link>
+          </li>
+          <li>
+            <Logout />
           </li>
         </ul>
       </div>
