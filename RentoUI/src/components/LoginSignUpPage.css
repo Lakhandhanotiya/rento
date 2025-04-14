@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login-signup-form {
+    background: white;
+    padding: 40px;
+    max-width: 400px;
+    margin: 100px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-signup-form h2 {
+    text-align: center;
+    color: #4caf50;
+  }
+  
+  .login-signup-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .login-signup-form button {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-signup-form button:hover {
+    background-color: #45a049;
+  }
+  

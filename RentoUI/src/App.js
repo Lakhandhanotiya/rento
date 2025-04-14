@@ -38,9 +38,9 @@ const App = () => {
                   </div>
                 )}
                 <div className="flex-grow-1 p-4">
-                  <button className="btn btn-sm btn-primary mb-3" onClick={toggleSidebar}>
+                  {/* <button className="btn btn-sm btn-primary " onClick={toggleSidebar}>
                     {isSidebarOpen ? 'Hide Sidebar' : 'Show Sidebar'}
-                  </button>
+                  </button> */}
                   <Home />
                   <h1 className="mb-4">Room Rent Service</h1>
                   <RoomList />
